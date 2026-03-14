@@ -1,0 +1,4 @@
+.idea
+.bazelbsp
+bazel-*
+node_modules
