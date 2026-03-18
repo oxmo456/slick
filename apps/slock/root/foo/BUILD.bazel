@@ -1,0 +1,14 @@
+load("//tools:slck_ng_project.bzl", "slck_ng_project")
+
+slck_ng_project(
+    name = "foo",
+    srcs = [
+        "foo.component.html",
+        "foo.component.scss",
+        "foo.component.ts",
+        "index.ts",
+    ],
+    deps = [
+        "//:node_modules/@angular/core",
+    ],
+)

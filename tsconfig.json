@@ -1,0 +1,27 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "paths": {
+            "@nnm/*": ["./packages/ng/*"]
+        },
+        "baseUrl": "./",
+        "strict": true,
+        "declaration": true,
+        "declarationMap": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "bundler",
+        "importHelpers": true,
+        "target": "es2020",
+        "module": "es2020",
+        "lib": ["es2020", "dom"]
+    },
+    "angularCompilerOptions": {
+        "compilationMode": "full",
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    },
+    "exclude": ["bazel-*", "node_modules", "./**/*.spec.ts"],
+    "include": ["./**/*.ts"]
+}

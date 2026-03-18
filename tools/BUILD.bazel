@@ -1,0 +1,41 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@npm//:@angular/compiler-cli/package_json.bzl", angular_compiler_cli = "bin")
+load("@npm//:vite/package_json.bzl", vite = "bin")
+
+angular_compiler_cli.ngc_binary(
+    name = "ngc",
+    visibility = ["//visibility:public"],
+)
+
+vite.vite_binary(
+    name = "vite",
+    visibility = ["//visibility:public"],
+)
+
+js_library(
+    name = "vite-config",
+    srcs = [
+        "vite.config.mjs",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:node_modules/@analogjs/vite-plugin-angular",
+        "//:node_modules/@angular/build",
+        "//:node_modules/@angular/compiler-cli",
+        "//:node_modules/@babel/core",
+        "//:node_modules/fast-glob",
+        "//:node_modules/sass-embedded",
+        "//:node_modules/tinyglobby",
+        "//:node_modules/typescript",
+        "//:node_modules/vite",
+        "//:node_modules/vite-plugin-inspect",
+        "//:node_modules/vitest",
+    ],
+)
+
+exports_files(
+    [
+        "test-setup.ts",
+    ],
+    visibility = ["//visibility:public"],
+)

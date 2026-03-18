@@ -1,0 +1,16 @@
+load("//tools:slck_ng_project.bzl", "slck_ng_project")
+
+slck_ng_project(
+    name = "root",
+    srcs = [
+        "root.component.html",
+        "root.component.scss",
+        "root.component.ts",
+    ],
+    deps = [
+        "//:node_modules/@angular/common",
+        "//:node_modules/@angular/core",
+        "//:node_modules/rxjs",
+        "//apps/slock/root/foo",
+    ],
+)

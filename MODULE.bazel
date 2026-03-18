@@ -1,10 +1,15 @@
-module(
-    name = "slick",
-    version = "0.0.0",
+bazel_dep(name = "aspect_rules_lint", version = "1.10.2")
+bazel_dep(name = "aspect_bazel_lib", version = "2.21.2")
+
+bazel_dep(
+    name = "buildifier_prebuilt",
+    version = "8.2.0.2",
+    dev_dependency = True,
 )
 
-bazel_dep(name = "rules_java", version = "9.3.0")
-bazel_dep(name = "rules_jvm_external", version = "6.10")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
+bazel_dep(name = "rules_java", version = "8.16.1")
+bazel_dep(name = "rules_jvm_external", version = "6.8")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
@@ -12,22 +17,66 @@ maven.install(
         "org.apache.logging.log4j:log4j-api:2.16.0",
         "org.apache.logging.log4j:log4j-to-slf4j:2.16.0",
         "org.hamcrest:hamcrest-library:1.3",
-        "org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE",
-        "org.springframework.boot:spring-boot-test-autoconfigure:2.1.3.RELEASE",
-        "org.springframework.boot:spring-boot-test:2.1.3.RELEASE",
-        "org.springframework.boot:spring-boot:2.1.3.RELEASE",
-        "org.springframework.boot:spring-boot-starter-web:2.1.3.RELEASE",
+        "org.springframework.boot:spring-boot-autoconfigure:3.4.4",
+        "org.springframework.boot:spring-boot-test-autoconfigure:3.4.4",
+        "org.springframework.boot:spring-boot-test:3.4.4",
+        "org.springframework.boot:spring-boot:3.4.4",
+        "org.springframework.boot:spring-boot-starter-web:3.4.4",
+        "org.springframework.boot:spring-boot-loader-tools:3.4.4",
+        "org.springframework.boot:spring-boot-starter-jetty:3.4.4",
+        "org.springframework.boot:spring-boot-jarmode-tools:3.4.4",
         "org.springframework:spring-beans:5.1.5.RELEASE",
         "org.springframework:spring-context:5.1.5.RELEASE",
         "org.springframework:spring-test:5.1.5.RELEASE",
         "org.springframework:spring-web:5.1.5.RELEASE",
+        "javax.annotation:javax.annotation-api:1.3.2",
     ],
     fetch_sources = True,
-    known_contributing_modules = ["protobuf"],
+    known_contributing_modules = [
+        "",
+        "protobuf",
+    ],
     lock_file = "//:maven_install.json",
     repositories = [
         "https://repo1.maven.org/maven2",
     ],
-    version_conflict_policy = "pinned",
 )
 use_repo(maven, "maven")
+
+bazel_dep(name = "rules_spring", version = "2.6.3")
+
+bazel_dep(name = "rules_oci", version = "2.2.6")
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+oci.pull(
+    name = "distroless_java",
+    digest = "sha256:161a1d97d592b3f1919801578c3a47c8e932071168a96267698f4b669c24c76d",
+    image = "gcr.io/distroless/java17",
+)
+use_repo(oci, "distroless_java")
+
+bazel_dep(name = "aspect_rules_js", version = "2.6.2")
+bazel_dep(name = "rules_nodejs", version = "6.5.2")
+
+node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node", dev_dependency = True)
+node.toolchain(node_version = "22.20.0")
+
+npm = use_extension("@aspect_rules_js//npm:extensions.bzl", "npm", dev_dependency = True)
+npm.npm_translate_lock(
+    name = "npm",
+    pnpm_lock = "//:pnpm-lock.yaml",
+    verify_node_modules_ignored = "//:.bazelignore",
+)
+
+bazel_dep(name = "aspect_rules_ts", version = "3.8.4")
+
+rules_ts_ext = use_extension("@aspect_rules_ts//ts:extensions.bzl", "ext", dev_dependency = True)
+rules_ts_ext.deps(ts_version_from = "//:package.json")
+use_repo(rules_ts_ext, "npm_typescript")
+
+use_repo(npm, "npm")
+
+pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
+use_repo(pnpm, "pnpm")
+
+bazel_dep(name = "bazel_skylib", version = "1.9.0")

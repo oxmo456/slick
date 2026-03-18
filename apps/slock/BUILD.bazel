@@ -1,0 +1,18 @@
+load("//tools:slck_ng_app.bzl", "slck_ng_app")
+
+slck_ng_app(
+    name = "slock",
+    index_template = "index.template.html",
+    main = "main.ts",
+    static_deps = [
+        "https://accounts.google.com/gsi/client",
+    ],
+    styles = ["style.scss"],
+    deps = [
+        "//:node_modules/@angular/common",
+        "//:node_modules/@angular/compiler",
+        "//:node_modules/@angular/platform-browser",
+        "//:node_modules/bulma",
+        "//apps/slock/root",
+    ],
+)

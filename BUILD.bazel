@@ -1,0 +1,31 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+    visibility = ["//visibility:public"],
+)
+
+npm_link_all_packages(
+    name = "node_modules",
+)
+
+alias(
+    name = "format",
+    actual = "//tools/format",
+)
+
+js_library(
+    name = "prettierrc",
+    srcs = [".prettierrc.mjs"],
+    visibility = ["//visibility:public"],
+)
+
+exports_files(
+    [
+        "package.json",
+    ],
+    visibility = ["//visibility:public"],
+)

@@ -1,4 +1,5 @@
-.idea
+.bazelbsp/
+.idea/
 .bazelbsp
 bazel-*
 node_modules

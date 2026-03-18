@@ -1,0 +1,49 @@
+load("@rules_java//java:defs.bzl", "java_binary")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("@rules_spring//springboot:springboot.bzl", "springboot")
+
+java_binary(
+    name = "slick",
+    main_class = "slick.Application",
+    visibility = [
+        "//visibility:public",
+    ],
+    runtime_deps = ["//apps/slick/src/main/java/slick"],
+)
+
+springboot(
+    name = "spring",
+    boot_app_class = "slick.Application",
+    boot_launcher_class = "org.springframework.boot.loader.launch.JarLauncher",
+    java_library = "//apps/slick/src/main/java/slick",
+    deps = [
+        "@maven//:javax_annotation_javax_annotation_api",
+        "@maven//:org_springframework_boot_spring_boot_jarmode_tools",
+        "@maven//:org_springframework_boot_spring_boot_loader_tools",
+        "@maven//:org_springframework_boot_spring_boot_starter_jetty",
+        "@maven//:org_springframework_spring_webmvc",
+    ],
+)
+
+pkg_tar(
+    name = "slick-binary-tar",
+    srcs = [":spring.jar"],
+)
+
+oci_image(
+    name = "slick-image",
+    base = "@distroless_java",
+    entrypoint = [
+        "java",
+        "-jar",
+        "/spring.jar",
+    ],
+    tars = [":slick-binary-tar"],
+)
+
+oci_load(
+    name = "slick-load",
+    image = ":slick-image",
+    repo_tags = ["slick/slick:latest"],
+)

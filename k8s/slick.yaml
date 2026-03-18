@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slick
+  labels:
+    app: slick
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slick
+  template:
+    metadata:
+      labels:
+        app: slick
+    spec:
+      containers:
+      - name: slick
+        image: slick/slick:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slick
+spec:
+  selector:
+    app: slick
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
