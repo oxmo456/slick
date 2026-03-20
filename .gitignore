@@ -3,3 +3,4 @@
 .bazelbsp
 bazel-*
 node_modules
+.claude
