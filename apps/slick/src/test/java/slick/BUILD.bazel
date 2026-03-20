@@ -6,8 +6,7 @@ java_test(
     test_class = "slick.SlickControllerIntegrationTest",
     deps = [
         "//apps/slick/src/main/java/slick",
-        "@maven//:io_rest_assured_rest_assured",
-        "@maven//:org_hamcrest_hamcrest_library",
+        "@maven//:com_microsoft_playwright_playwright",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",

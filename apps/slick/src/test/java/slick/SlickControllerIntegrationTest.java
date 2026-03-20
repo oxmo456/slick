@@ -1,6 +1,10 @@
 package slick;
 
-import io.restassured.RestAssured;
+import com.microsoft.playwright.APIRequest;
+import com.microsoft.playwright.APIRequestContext;
+import com.microsoft.playwright.APIResponse;
+import com.microsoft.playwright.Playwright;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
@@ -8,8 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(JUnitPlatform.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -18,17 +21,27 @@ public class SlickControllerIntegrationTest {
     @LocalServerPort
     private int port;
 
+    private Playwright playwright;
+    private APIRequestContext request;
+
     @BeforeEach
     void setUp() {
-        RestAssured.port = port;
+        playwright = Playwright.create();
+        request = playwright.request().newContext(
+            new APIRequest.NewContextOptions().setBaseURL("http://localhost:" + port)
+        );
+    }
+
+    @AfterEach
+    void tearDown() {
+        request.dispose();
+        playwright.close();
     }
 
     @Test
     void indexReturnsGreeting() {
-        given()
-            .when().get("/")
-            .then()
-                .statusCode(200)
-                .body(equalTo("Greetings from Slick!"));
+        APIResponse response = request.get("/");
+        assertEquals(200, response.status());
+        assertEquals("Greetings from Slick!", response.text());
     }
 }
