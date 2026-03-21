@@ -1,6 +1,6 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {interval, Subscription, switchMap} from 'rxjs';
+import {Component} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
 
 @Component({
     selector: 'root',
@@ -9,24 +9,19 @@ import {interval, Subscription, switchMap} from 'rxjs';
     templateUrl: './root.component.html',
     imports: [],
 })
-export class RootComponent implements OnInit, OnDestroy {
-    private http = inject(HttpClient);
-    private subscription: Subscription | undefined;
+export class RootComponent {
+    private socket: WebSocketSubject<string>;
 
     constructor() {
-        console.log('w00t!');
-    }
+        this.socket = webSocket<string>({
+            url: 'ws://localhost:9000/slick',
+            deserializer: ({data}) => data,
+        });
 
-    ngOnInit() {
-        this.subscription = interval(2000)
-            .pipe(switchMap(() => this.http.get('http://localhost:9000/', {responseType: 'text'})))
-            .subscribe({
-                next: (response) => console.log('[Slick API]', response),
-                error: (err) => console.error('[Slick API] Error:', err),
-            });
-    }
-
-    ngOnDestroy() {
-        this.subscription?.unsubscribe();
+        this.socket.pipe(takeUntilDestroyed()).subscribe({
+            next: (msg) => console.log('[Slick WS]', msg),
+            error: (err) => console.error('[Slick WS] error', err),
+            complete: () => console.log('[Slick WS] disconnected'),
+        });
     }
 }

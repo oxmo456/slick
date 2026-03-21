@@ -3,6 +3,8 @@ package slick;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -13,15 +15,27 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Component
 public class SlickWebSocketHandler extends TextWebSocketHandler {
 
+    private static final Logger log = LoggerFactory.getLogger(SlickWebSocketHandler.class);
+
     private final Set<WebSocketSession> sessions = ConcurrentHashMap.newKeySet();
+
+    public SlickWebSocketHandler() {
+        super();
+        log.info("YES");
+    }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
+        log.info("WebSocket connection established: {} from {}", session.getId(), session.getRemoteAddress());
         sessions.add(session);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
+        log.info("WebSocket connection closed: {} from {}", session.getId(), session.getRemoteAddress());
+        log.info(status.toString());
+
+
         sessions.remove(session);
     }
 
