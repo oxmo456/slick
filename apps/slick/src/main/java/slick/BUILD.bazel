@@ -5,13 +5,18 @@ java_library(
     srcs = [
         "Application.java",
         "SlickController.java",
+        "SlickWebSocketHandler.java",
+        "WebSocketConfig.java",
     ],
     visibility = ["//visibility:public"],
     deps = [
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_boot_spring_boot_starter_web",
+        "@maven//:org_springframework_boot_spring_boot_starter_websocket",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_messaging",
         "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_websocket",
     ],
 )
