@@ -1,0 +1,11 @@
+name: TEST
+run-name: ${{ github.actor }} is testing Bazel monorepo
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v5
+    - name: test Bazel monorepo
+      run: bazel test //...
