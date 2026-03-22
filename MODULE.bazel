@@ -53,7 +53,6 @@ maven.install(
 use_repo(maven, "maven")
 
 bazel_dep(name = "rules_spring", version = "2.6.3")
-
 bazel_dep(name = "rules_oci", version = "2.2.6")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
