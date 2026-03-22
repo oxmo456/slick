@@ -4,6 +4,7 @@ java_library(
     name = "slick",
     srcs = [
         "Application.java",
+        "K8sContext.java",
         "SlickController.java",
         "SlickWebSocketHandler.java",
         "WebSocketConfig.java",
@@ -20,5 +21,6 @@ java_library(
         "@maven//:org_springframework_spring_web",
         "@maven//:org_springframework_spring_websocket",
         "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_spring_beans",
     ],
 )

@@ -17,10 +17,12 @@ public class SlickWebSocketHandler extends TextWebSocketHandler {
 
     private static final Logger log = LoggerFactory.getLogger(SlickWebSocketHandler.class);
 
+    private final K8sContext k8sContext;
     private final Set<WebSocketSession> sessions = ConcurrentHashMap.newKeySet();
 
-    public SlickWebSocketHandler() {
+    public SlickWebSocketHandler(K8sContext k8sContext) {
         super();
+        this.k8sContext = k8sContext;
         log.info("YES");
     }
 
@@ -41,7 +43,7 @@ public class SlickWebSocketHandler extends TextWebSocketHandler {
 
     @Scheduled(fixedRate = 5000)
     public void pushRandomString() {
-        String message = UUID.randomUUID().toString();
+        String message = k8sContext.getPodUid() + " " + UUID.randomUUID();
         sessions.removeIf(session -> {
             if (!session.isOpen()) return true;
             try {
