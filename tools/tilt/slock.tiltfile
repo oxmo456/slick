@@ -1,0 +1,6 @@
+def configure_slock():
+    local_resource(
+        "slock",
+        serve_cmd = "ibazel run //apps/slock:serve",
+        links = ["http://localhost:5173/"],
+    )

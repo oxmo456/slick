@@ -1,0 +1,29 @@
+load("ext://helm_resource", "helm_repo", "helm_resource")
+
+def configure_ingress():
+    local("kubectl get ns ingress-nginx || kubectl create ns ingress-nginx")
+
+    helm_repo(
+        "ingress-nginx",
+        "https://kubernetes.github.io/ingress-nginx",
+        resource_name = "ingress-nginx-chart",
+        labels = ["ingress"],
+    )
+
+    helm_resource(
+        "ingress-nginx",
+        "ingress-nginx/ingress-nginx",
+        namespace = "ingress-nginx",
+        resource_deps = ["ingress-nginx-chart"],
+        release_name = "ingress-nginx",
+        port_forwards = "5050:80",
+        labels = ["ingress"],
+        flags = [
+            "--version",
+            "4.7.1",
+            "--set",
+            "controller.allowSnippetAnnotations=true",
+            "--set",
+            "controller.ingressClassResource.name=nginx",
+        ],
+    )

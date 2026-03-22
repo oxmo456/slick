@@ -1,0 +1,12 @@
+load("./bazel-utils.tiltfile", "extract_target_deps")
+
+def configure_slick():
+    k8s_yaml("tools/k8s/slick.yaml")
+    k8s_yaml("tools/k8s/slick-ws-ingress.yaml")
+    k8s_resource("slick", port_forwards = "9000:8080")
+    custom_build(
+        ref = "slick/slick",
+        command = "bazel run //apps/slick:slick-load -- --norun",
+        deps = extract_target_deps("//apps/slick:slick-load"),
+        tag = "latest",
+    )
