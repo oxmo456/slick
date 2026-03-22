@@ -19,6 +19,9 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
+            System.out.println("Pod name: " + System.getenv("POD_NAME"));
+            System.out.println("Pod UID:  " + System.getenv("POD_UID"));
+
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
