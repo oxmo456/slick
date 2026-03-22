@@ -43,8 +43,8 @@ local_resource(
 )
 
 k8s_resource("slick", port_forwards = "9000:8080")
-k8s_yaml("k8s/slick.yaml")
-k8s_yaml("k8s/slick-ws-ingress.yaml")
+k8s_yaml("tools/k8s/slick.yaml")
+k8s_yaml("tools/k8s/slick-ws-ingress.yaml")
 custom_build(
     ref = "slick/slick",
     command = "bazel run //apps/slick:slick-load -- --norun",
