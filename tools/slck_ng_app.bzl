@@ -1,8 +1,5 @@
 load("@aspect_rules_js//js:defs.bzl", "js_library", "js_run_devserver")
-load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
-load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load("@npm//:html-insert-assets/package_json.bzl", html_insert_assets_bin = "bin")
-load("//tools:slck_ng_project.bzl", "slck_ng_project")
 load("//tools:slck_vite.bzl", "slck_vite")
 load("//tools:slck_vite_analog_ts_config.bzl", "slck_vite_analog_ts_config")
 
