@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class K8sContext {
 
-    @Value("${app.pod.name}")
-    private String podName;
+  @Value("${app.pod.name}")
+  private String podName;
 
-    @Value("${app.pod.uid}")
-    private String podUid;
+  @Value("${app.pod.uid}")
+  private String podUid;
 
-    public String getPodName() {
-        return podName;
-    }
+  public String getPodName() {
+    return podName;
+  }
 
-    public String getPodUid() {
-        return podUid;
-    }
+  public String getPodUid() {
+    return podUid;
+  }
 }

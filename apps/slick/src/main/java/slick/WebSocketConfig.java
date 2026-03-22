@@ -9,14 +9,14 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-    private final SlickWebSocketHandler handler;
+  private final SlickWebSocketHandler handler;
 
-    public WebSocketConfig(SlickWebSocketHandler handler) {
-        this.handler = handler;
-    }
+  public WebSocketConfig(SlickWebSocketHandler handler) {
+    this.handler = handler;
+  }
 
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(handler, "/slick").setAllowedOrigins("*");
-    }
+  @Override
+  public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+    registry.addHandler(handler, "/slick").setAllowedOrigins("*");
+  }
 }

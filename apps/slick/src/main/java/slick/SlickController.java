@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SlickController {
 
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Slick!";
-    }
+  @RequestMapping("/")
+  public String index() {
+    return "Greetings from Slick!";
+  }
 }

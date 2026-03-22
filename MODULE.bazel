@@ -1,5 +1,9 @@
-bazel_dep(name = "aspect_rules_lint", version = "1.10.2")
+bazel_dep(name = "aspect_rules_lint", version = "2.3.0")
 bazel_dep(name = "aspect_bazel_lib", version = "2.21.2")
+
+format_tools = use_extension("@aspect_rules_lint//format:extensions.bzl", "tools")
+format_tools.google_java_format()
+use_repo(format_tools, "google-java-format")
 
 bazel_dep(
     name = "buildifier_prebuilt",
