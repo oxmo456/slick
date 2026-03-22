@@ -13,6 +13,7 @@
         "bulma": "1.0.4"
     },
     "devDependencies": {
+        "playwright": "1.58.2",
         "vite-plugin-inspect": "11.3.3",
         "html-insert-assets": "0.14.3",
         "fast-glob": "3.3.2",
