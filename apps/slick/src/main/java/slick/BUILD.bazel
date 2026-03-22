@@ -8,6 +8,7 @@ java_library(
         "SlickWebSocketHandler.java",
         "WebSocketConfig.java",
     ],
+    resources = ["//apps/slick/src/main/resources:resources"],
     visibility = ["//visibility:public"],
     deps = [
         "@maven//:org_springframework_boot_spring_boot",

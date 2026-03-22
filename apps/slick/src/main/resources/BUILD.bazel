@@ -1,0 +1,8 @@
+filegroup(
+    name = "resources",
+    srcs = [
+        "application.properties",
+        "logback-spring.xml",
+    ],
+    visibility = ["//visibility:public"],
+)
