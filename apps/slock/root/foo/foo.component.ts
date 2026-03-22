@@ -4,7 +4,7 @@ import {Component, input} from '@angular/core';
     selector: 'vctr-foo',
     templateUrl: './foo.component.html',
     styleUrls: ['./foo.component.scss'],
-    standalone: true,
+    standalone: true
 })
 export class FooComponent {
     name = input('no name');

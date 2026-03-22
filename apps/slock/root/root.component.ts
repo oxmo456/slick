@@ -8,7 +8,7 @@ import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
     standalone: true,
     styleUrl: './root.component.scss',
     templateUrl: './root.component.html',
-    imports: [],
+    imports: []
 })
 export class RootComponent {
     private socket: WebSocketSubject<string>;
@@ -16,7 +16,7 @@ export class RootComponent {
     constructor() {
         this.socket = webSocket<string>({
             url: 'ws://localhost:5050/slick',
-            deserializer: ({data}) => data,
+            deserializer: ({data}) => data
         });
 
         this.socket
@@ -25,14 +25,14 @@ export class RootComponent {
                     delay: (_, retryCount) => {
                         console.log(`[Slick WS] reconnecting in 5s (attempt ${retryCount})`);
                         return timer(5_000);
-                    },
+                    }
                 }),
-                takeUntilDestroyed(),
+                takeUntilDestroyed()
             )
             .subscribe({
                 next: (msg) => console.log('[Slick WS]', msg),
                 error: (err) => console.error('[Slick WS] error', err),
-                complete: () => console.log('[Slick WS] disconnected'),
+                complete: () => console.log('[Slick WS] disconnected')
             });
     }
 }

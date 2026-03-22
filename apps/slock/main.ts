@@ -5,7 +5,7 @@ import {provideHttpClient} from '@angular/common/http';
 import {RootComponent} from './root/root.component';
 
 bootstrapApplication(RootComponent, {
-    providers: [provideZonelessChangeDetection(), provideHttpClient()],
+    providers: [provideZonelessChangeDetection(), provideHttpClient()]
 }).then(() => {
     console.log('yo!');
 });

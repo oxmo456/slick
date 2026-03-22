@@ -4,4 +4,5 @@ export default {
     plugins: [],
     singleQuote: true,
     bracketSpacing: false,
+    trailingComma: 'none'
 };

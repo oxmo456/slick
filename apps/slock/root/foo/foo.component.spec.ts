@@ -5,7 +5,7 @@ import {FooComponent} from './foo.component';
 describe('FooComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [FooComponent],
+            imports: [FooComponent]
         }).compileComponents();
     });
 

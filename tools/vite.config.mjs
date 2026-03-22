@@ -8,19 +8,19 @@ export default defineConfig({
     resolve: {
         conditions: ['module'],
         alias: {
-            '@nnm': path.resolve(process.cwd(), 'packages/ng/'),
-        },
+            '@nnm': path.resolve(process.cwd(), 'packages/ng/')
+        }
     },
     css: {
         preprocessorOptions: {
-            scss: {},
-        },
+            scss: {}
+        }
     },
     plugins: [
         inspect(),
         angularAnalogJsPlugin({
-            tsconfig: 'tsconfig.app.json',
-        }),
+            tsconfig: 'tsconfig.app.json'
+        })
     ],
     test: {
         globals: true,
@@ -30,8 +30,8 @@ export default defineConfig({
         reporters: ['default'],
         server: {
             deps: {
-                inline: [/@angular/],
-            },
-        },
-    },
+                inline: [/@angular/]
+            }
+        }
+    }
 });
