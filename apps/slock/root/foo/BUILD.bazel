@@ -8,6 +8,9 @@ slck_ng_project(
         "foo.component.ts",
         "index.ts",
     ],
+    test_srcs = [
+        "foo.component.spec.ts",
+    ],
     deps = [
         "//:node_modules/@angular/core",
     ],
