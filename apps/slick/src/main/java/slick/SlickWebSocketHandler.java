@@ -39,7 +39,7 @@ public class SlickWebSocketHandler extends TextWebSocketHandler {
         sessions.remove(session);
     }
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 5000)
     public void pushRandomString() {
         String message = UUID.randomUUID().toString();
         sessions.removeIf(session -> {
