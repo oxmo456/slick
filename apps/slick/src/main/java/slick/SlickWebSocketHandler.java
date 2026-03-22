@@ -43,7 +43,7 @@ public class SlickWebSocketHandler extends TextWebSocketHandler {
 
     @Scheduled(fixedRate = 5000)
     public void pushRandomString() {
-        String message = k8sContext.getPodUid() + " " + UUID.randomUUID();
+        String message = "pod_UUID: " + k8sContext.getPodUid() + "\nrand:" + UUID.randomUUID();
         sessions.removeIf(session -> {
             if (!session.isOpen()) return true;
             try {

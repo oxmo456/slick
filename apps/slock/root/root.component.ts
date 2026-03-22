@@ -14,7 +14,7 @@ export class RootComponent {
 
     constructor() {
         this.socket = webSocket<string>({
-            url: 'ws://localhost:9000/slick',
+            url: 'ws://localhost:5050/slick',
             deserializer: ({data}) => data,
         });
 
