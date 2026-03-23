@@ -1,5 +1,6 @@
 bazel_dep(name = "aspect_rules_lint", version = "2.3.0")
-bazel_dep(name = "aspect_bazel_lib", version = "2.21.2")
+bazel_dep(name = "aspect_bazel_lib", version = "2.22.5")
+bazel_dep(name = "aspect_rules_esbuild", version = "0.25.1")
 
 format_tools = use_extension("@aspect_rules_lint//format:extensions.bzl", "tools")
 format_tools.google_java_format()
