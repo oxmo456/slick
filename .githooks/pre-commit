@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-bazel run //:format
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
+echo "$STAGED_FILES" | xargs bazel run //:format
 
 git add -u
 
