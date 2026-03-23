@@ -1,7 +1,7 @@
 import {Component, input} from '@angular/core';
 
 @Component({
-    selector: 'vctr-foo',
+    selector: 'slck-foo',
     templateUrl: './foo.component.html',
     styleUrls: ['./foo.component.scss'],
     standalone: true

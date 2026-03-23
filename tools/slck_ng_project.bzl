@@ -1,3 +1,4 @@
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load("@npm//:vitest/package_json.bzl", vitest = "bin")
@@ -14,6 +15,17 @@ def slck_ng_project(
         name = name,
         srcs = srcs,
         deps = deps,
+    )
+
+    ts_project(
+        name = name,
+        srcs = srcs,
+        deps = deps +
+               ["//:node_modules/tslib"],
+        tsc = "//tools:ngc",
+        tsconfig = "//:tsconfig",
+        visibility = ["//visibility:public"],
+        declaration = True,
     )
 
     if test_srcs:

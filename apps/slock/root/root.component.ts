@@ -2,13 +2,14 @@ import {Component} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {retry, timer} from 'rxjs';
 import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
+import {FooComponent} from './foo';
 
 @Component({
     selector: 'root',
     standalone: true,
     styleUrl: './root.component.scss',
     templateUrl: './root.component.html',
-    imports: []
+    imports: [FooComponent]
 })
 export class RootComponent {
     private socket: WebSocketSubject<string>;
