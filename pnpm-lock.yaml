@@ -42,7 +42,7 @@ devDependencies:
     version: 2.2.3(@analogjs/vite-plugin-angular@2.2.3)(@angular-devkit/architect@0.2101.4)(vitest@4.0.18)
   '@angular/build':
     specifier: 21.1.4
-    version: 21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18)
+    version: 21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(@types/node@22.19.15)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18)
   '@angular/compiler-cli':
     specifier: 21.1.4
     version: 21.1.4(@angular/compiler@21.1.4)(typescript@5.9.3)
@@ -52,6 +52,12 @@ devDependencies:
   '@babel/core':
     specifier: 7.28.4
     version: 7.28.4
+  '@types/babel__core':
+    specifier: 7.20.5
+    version: 7.20.5
+  '@types/node':
+    specifier: 22.19.15
+    version: 22.19.15
   fast-glob:
     specifier: 3.3.2
     version: 3.3.2
@@ -78,13 +84,13 @@ devDependencies:
     version: 5.9.3
   vite:
     specifier: 7.1.5
-    version: 7.1.5(sass-embedded@1.93.2)
+    version: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
   vite-plugin-inspect:
     specifier: 11.3.3
     version: 11.3.3(vite@7.1.5)
   vitest:
     specifier: 4.0.18
-    version: 4.0.18(jsdom@28.1.0)(sass-embedded@1.93.2)
+    version: 4.0.18(@types/node@22.19.15)(jsdom@28.1.0)(sass-embedded@1.93.2)
   zone.js:
     specifier: 0.16.0
     version: 0.16.0
@@ -114,7 +120,7 @@ packages:
       '@angular/build':
         optional: true
     dependencies:
-      '@angular/build': 21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18)
+      '@angular/build': 21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(@types/node@22.19.15)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18)
       ts-morph: 21.0.1
     dev: true
 
@@ -127,7 +133,7 @@ packages:
     dependencies:
       '@analogjs/vite-plugin-angular': 2.2.3(@angular/build@21.1.4)
       '@angular-devkit/architect': 0.2101.4
-      vitest: 4.0.18(jsdom@28.1.0)(sass-embedded@1.93.2)
+      vitest: 4.0.18(@types/node@22.19.15)(jsdom@28.1.0)(sass-embedded@1.93.2)
     dev: true
 
   /@angular-devkit/architect@0.2101.4:
@@ -158,7 +164,7 @@ packages:
       source-map: 0.7.6
     dev: true
 
-  /@angular/build@21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18):
+  /@angular/build@21.1.4(@angular/compiler-cli@21.1.4)(@angular/compiler@21.1.4)(@angular/core@21.1.4)(@angular/platform-browser@21.1.4)(@types/node@22.19.15)(sass-embedded@1.93.2)(tslib@2.3.0)(typescript@5.9.3)(vitest@4.0.18):
     resolution: {integrity: sha512-7CAAQPWFMMqod40ox5MOVB/CnoBXFDehyQhs0hls6lu7bOy/M0EDy0v6bERkyNGRz1mihWWBiCV8XzEinrlq1A==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -213,7 +219,7 @@ packages:
       '@babel/core': 7.28.5
       '@babel/helper-annotate-as-pure': 7.27.3
       '@babel/helper-split-export-declaration': 7.24.7
-      '@inquirer/confirm': 5.1.21
+      '@inquirer/confirm': 5.1.21(@types/node@22.19.15)
       '@vitejs/plugin-basic-ssl': 2.1.0(vite@7.3.0)
       beasties: 0.3.5
       browserslist: 4.26.3
@@ -235,8 +241,8 @@ packages:
       tslib: 2.3.0
       typescript: 5.9.3
       undici: 7.20.0
-      vite: 7.3.0(sass-embedded@1.93.2)(sass@1.97.1)
-      vitest: 4.0.18(jsdom@28.1.0)(sass-embedded@1.93.2)
+      vite: 7.3.0(@types/node@22.19.15)(sass-embedded@1.93.2)(sass@1.97.1)
+      vitest: 4.0.18(@types/node@22.19.15)(jsdom@28.1.0)(sass-embedded@1.93.2)
       watchpack: 2.5.0
     optionalDependencies:
       lmdb: 3.4.4
@@ -497,7 +503,7 @@ packages:
     resolution: {integrity: sha512-fXSwMQqitTGeHLBC08Eq5yXz2m37E4pJX1qAU1+2cNedz/ifv/bVXft90VeSav5nFO61EcNgwr0aJxbyPaWBPg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.28.4
+      '@babel/types': 7.29.0
     dev: true
 
   /@babel/helper-compilation-targets@7.27.2:
@@ -521,7 +527,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/traverse': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/types': 7.29.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -558,7 +564,7 @@ packages:
     resolution: {integrity: sha512-oy5V7pD+UvfkEATUKvIjvIAH/xCzfsFVw7ygW2SI6NClZzquT+mwdTfgfdbUiceh6iQO0CHtCPsyze/MZ2YbAA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.28.4
+      '@babel/types': 7.29.0
     dev: true
 
   /@babel/helper-string-parser@7.27.1:
@@ -1235,7 +1241,7 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@inquirer/confirm@5.1.21:
+  /@inquirer/confirm@5.1.21(@types/node@22.19.15):
     resolution: {integrity: sha512-KR8edRkIsUayMXV+o3Gv+q4jlhENF9nMYUZs9PA2HzrXeHI8M5uDag70U7RJn9yyiMZSbtF5/UexBtAVtZGSbQ==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -1244,11 +1250,12 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@22.19.15)
+      '@inquirer/type': 3.0.10(@types/node@22.19.15)
+      '@types/node': 22.19.15
     dev: true
 
-  /@inquirer/core@10.3.2:
+  /@inquirer/core@10.3.2(@types/node@22.19.15):
     resolution: {integrity: sha512-43RTuEbfP8MbKzedNqBrlhhNKVwoK//vUFNW3Q3vZ88BLcrs4kYpGg+B2mm5p2K/HfygoCxuKwJJiv8PbGmE0A==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -1259,7 +1266,8 @@ packages:
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10
+      '@inquirer/type': 3.0.10(@types/node@22.19.15)
+      '@types/node': 22.19.15
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
@@ -1272,7 +1280,7 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@inquirer/type@3.0.10:
+  /@inquirer/type@3.0.10(@types/node@22.19.15):
     resolution: {integrity: sha512-BvziSRxfz5Ov8ch0z/n3oijRSEcEsHnhggm4xFZe93DHcUCTlutlq9Ox4SVENAfcRD22UQq7T/atg9Wr3k09eA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -1280,6 +1288,8 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
+    dependencies:
+      '@types/node': 22.19.15
     dev: true
 
   /@istanbuljs/schema@0.1.3:
@@ -2099,6 +2109,35 @@ packages:
     dev: true
     optional: true
 
+  /@types/babel__core@7.20.5:
+    resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
+    dependencies:
+      '@babel/parser': 7.29.0
+      '@babel/types': 7.29.0
+      '@types/babel__generator': 7.27.0
+      '@types/babel__template': 7.4.4
+      '@types/babel__traverse': 7.28.0
+    dev: true
+
+  /@types/babel__generator@7.27.0:
+    resolution: {integrity: sha512-ufFd2Xi92OAVPYsy+P4n7/U7e68fex0+Ee8gSG9KX7eo084CWiQ4sdxktvdl0bOPupXtVJPY19zk6EwWqUQ8lg==}
+    dependencies:
+      '@babel/types': 7.29.0
+    dev: true
+
+  /@types/babel__template@7.4.4:
+    resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
+    dependencies:
+      '@babel/parser': 7.29.0
+      '@babel/types': 7.29.0
+    dev: true
+
+  /@types/babel__traverse@7.28.0:
+    resolution: {integrity: sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q==}
+    dependencies:
+      '@babel/types': 7.29.0
+    dev: true
+
   /@types/chai@5.2.3:
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
     dependencies:
@@ -2114,13 +2153,19 @@ packages:
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
     dev: true
 
+  /@types/node@22.19.15:
+    resolution: {integrity: sha512-F0R/h2+dsy5wJAUe3tAU6oqa2qbWY5TpNfL/RGmo1y38hiyO1w3x2jPtt76wmuaJI4DQnOBu21cNXQ2STIUUWg==}
+    dependencies:
+      undici-types: 6.21.0
+    dev: true
+
   /@vitejs/plugin-basic-ssl@2.1.0(vite@7.3.0):
     resolution: {integrity: sha512-dOxxrhgyDIEUADhb/8OlV9JIqYLgos03YorAueTIeOUskLJSEsfwCByjbu98ctXitUN3znXKp0bYD/WHSudCeA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     peerDependencies:
       vite: ^6.0.0 || ^7.0.0
     dependencies:
-      vite: 7.3.0(sass-embedded@1.93.2)(sass@1.97.1)
+      vite: 7.3.0(@types/node@22.19.15)(sass-embedded@1.93.2)(sass@1.97.1)
     dev: true
 
   /@vitest/expect@4.0.18:
@@ -2148,7 +2193,7 @@ packages:
       '@vitest/spy': 4.0.18
       estree-walker: 3.0.3
       magic-string: 0.30.21
-      vite: 7.1.5(sass-embedded@1.93.2)
+      vite: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
     dev: true
 
   /@vitest/pretty-format@4.0.18:
@@ -2871,7 +2916,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@babel/core': 7.28.4
-      '@babel/parser': 7.28.4
+      '@babel/parser': 7.29.0
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
       semver: 7.7.3
@@ -3806,6 +3851,10 @@ packages:
     hasBin: true
     dev: true
 
+  /undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+    dev: true
+
   /undici@7.20.0:
     resolution: {integrity: sha512-MJZrkjyd7DeC+uPZh+5/YaMDxFiiEEaDgbUSVMXayofAkDWF1088CDo+2RPg7B1BuS1qf1vgNE7xqwPxE0DuSQ==}
     engines: {node: '>=20.18.1'}
@@ -3845,7 +3894,7 @@ packages:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.1 || ^7.0.0-0
     dependencies:
       birpc: 2.9.0
-      vite: 7.1.5(sass-embedded@1.93.2)
+      vite: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
       vite-hot-client: 2.1.0(vite@7.1.5)
     dev: true
 
@@ -3854,7 +3903,7 @@ packages:
     peerDependencies:
       vite: ^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0
     dependencies:
-      vite: 7.1.5(sass-embedded@1.93.2)
+      vite: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
     dev: true
 
   /vite-plugin-inspect@11.3.3(vite@7.1.5):
@@ -3875,13 +3924,13 @@ packages:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       unplugin-utils: 0.3.1
-      vite: 7.1.5(sass-embedded@1.93.2)
+      vite: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
       vite-dev-rpc: 1.1.0(vite@7.1.5)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@7.1.5(sass-embedded@1.93.2):
+  /vite@7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2):
     resolution: {integrity: sha512-4cKBO9wR75r0BeIWWWId9XK9Lj6La5X846Zw9dFfzMRw38IlTk2iCcUt6hsyiDRcPidc55ZParFYDXi0nXOeLQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
@@ -3921,6 +3970,7 @@ packages:
       yaml:
         optional: true
     dependencies:
+      '@types/node': 22.19.15
       esbuild: 0.25.11
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
@@ -3932,7 +3982,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@7.3.0(sass-embedded@1.93.2)(sass@1.97.1):
+  /vite@7.3.0(@types/node@22.19.15)(sass-embedded@1.93.2)(sass@1.97.1):
     resolution: {integrity: sha512-dZwN5L1VlUBewiP6H9s2+B3e3Jg96D0vzN+Ry73sOefebhYr9f94wwkMNN/9ouoU8pV1BqA1d1zGk8928cx0rg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
@@ -3972,6 +4022,7 @@ packages:
       yaml:
         optional: true
     dependencies:
+      '@types/node': 22.19.15
       esbuild: 0.27.2
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
@@ -3984,7 +4035,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@4.0.18(jsdom@28.1.0)(sass-embedded@1.93.2):
+  /vitest@4.0.18(@types/node@22.19.15)(jsdom@28.1.0)(sass-embedded@1.93.2):
     resolution: {integrity: sha512-hOQuK7h0FGKgBAas7v0mSAsnvrIgAvWmRFjmzpJ7SwFHH3g1k2u37JtYwOwmEKhK6ZO3v9ggDBBm0La1LCK4uQ==}
     engines: {node: ^20.0.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
@@ -4018,6 +4069,7 @@ packages:
       jsdom:
         optional: true
     dependencies:
+      '@types/node': 22.19.15
       '@vitest/expect': 4.0.18
       '@vitest/mocker': 4.0.18(vite@7.1.5)
       '@vitest/pretty-format': 4.0.18
@@ -4037,7 +4089,7 @@ packages:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.1.5(sass-embedded@1.93.2)
+      vite: 7.1.5(@types/node@22.19.15)(sass-embedded@1.93.2)
       why-is-node-running: 2.3.0
     transitivePeerDependencies:
       - jiti

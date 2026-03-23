@@ -1,6 +1,21 @@
 load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@npm//:@angular/compiler-cli/package_json.bzl", angular_compiler_cli = "bin")
 load("@npm//:vite/package_json.bzl", vite = "bin")
+
+ts_project(
+    name = "ngc.esbuild",
+    srcs = ["ngc.esbuild.ts"],
+    declaration = True,
+    tsconfig = "//:tsconfig-node",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:node_modules/@angular/compiler-cli",
+        "//:node_modules/@babel/core",
+        "//:node_modules/@types/babel__core",
+        "//:node_modules/@types/node",
+    ],
+)
 
 angular_compiler_cli.ngc_binary(
     name = "ngc",
